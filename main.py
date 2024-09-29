@@ -4,6 +4,7 @@ from  decimal import Decimal
 # Constantes
 c = 3 * 10**8  # Velocidade da luz em m/s
 h = 6.626 * 10**(-34)  # Constante de Planck em J*s
+h_ev = 4.136E-15  # Constante de Planck em eV*s
 m = 9.11 * 10**(-31)  # Massa do eletron em kg
 
 def menu():
@@ -137,7 +138,45 @@ def foton():
   print("4 - Energia (eV)")
   opcao = int(input("Digite a propriedade de entrada: "))
 
-  print("Saidas")
+  if opcao == 1:
+    print("Entre com o comprimento (m): ")
+    l = float(input())
+
+    e_j = h*c/l
+    e_ev = e_j / 1.602E-19
+
+    print(f'Energia em J: {Decimal(e_j):.2E}')
+    print(f'Energia em eV: {Decimal(e_ev):.2E}')
+
+  elif opcao == 2:
+    print("Entre com a Frequencia (Hz): ")
+    f = float(input())
+
+    e_j = h*f
+    e_ev = e_j / 1.602E-19
+
+    print(f'Energia em J: {Decimal(e_j):.2E}')
+    print(f'Energia em eV: {Decimal(e_ev):.2E}')
+
+  elif opcao == 3:
+    print("Entre com a Energia (J): ")
+    e = float(input())
+
+    l = h*c/e
+    f = e / h
+
+    print(f'Comprimento: {Decimal(l):.2E} m')
+    print(f'Frequencia: {Decimal(f):.2E} Hz')
+
+  else:
+    print("Entre com a Energia (eV): ")
+    e = float(input())
+
+    l = h_ev*c/e
+    f = e / h_ev
+
+    print(f'Comprimento: {Decimal(l):.2E} m')
+    print(f'Frequencia: {Decimal(f):.2E} Hz')
 
 print("Autores:")
 print("Kayna de Deus Ferreira da Silva")
