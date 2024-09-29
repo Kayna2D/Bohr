@@ -151,7 +151,11 @@ def foton():
     print("Entre com a Frequencia (Hz): ")
     f = float(input())
 
-    print("Propriedades do foton")
+    e_j = h*f
+    e_ev = e_j / 1.602E-19
+
+    print(f'Energia em J: {Decimal(e_j):.2E}')
+    print(f'Energia em eV: {Decimal(e_ev):.2E}')
 
   elif opcao == 3:
     print("Entre com a Energia (J): ")
@@ -164,8 +168,6 @@ def foton():
     e = float(input())
 
     print("Propriedades do foton")
-
-  print("Saidas")
 
 print("Autores:")
 print("Kayna de Deus Ferreira da Silva")
