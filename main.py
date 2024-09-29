@@ -40,10 +40,12 @@ def propriedades():
 
   raio = n**2 * 5.29E-11
   v = 2.187E6/n
+  ec = 13.6/n**2
 
   print() 
   print(f'Raio da órbita: {Decimal(raio):.2E} m')
   print(f'Velocidade: {Decimal(v):.2E} m/s')
+  print(f'Energia cinetica: {Decimal(ec):.2E} eV')
 
 def emissao_absorcao():
   print("Entre com o nivel inicial de energia: ")
