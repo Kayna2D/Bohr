@@ -3,11 +3,12 @@ from  decimal import Decimal
 
 # Constantes
 c = 3 * 10**8  # Velocidade da luz em m/s
-h = 4.135 * 10**(-15)  # Constante de Planck em J*s
+h = 6.626 * 10**(-34)  # Constante de Planck em J*s
+m = 9.11 * 10**(-31)  # Massa do eletron em kg
 
 def menu():
   while True:
-    print("1 - Propriedades do atomo de H")
+    print("1 - Propriedades de H")
     print("2 - Propriedades do foton na emissao/absorcao")
     print("3 - Nivel inicial ou final na absorcao de um foton")
     print("4 - Nivel inicial ou final na emissao de um foton")
@@ -37,8 +38,21 @@ def menu():
 def propriedades():
   print("Entre com o nivel de energia: ")
   n = float(input())
-   
-  print("Propriedades do atomo de H")
+
+  raio = n**2 * 5.29E-11
+  v = 2.187E6/n
+  ec = 13.6/n**2
+  ep = -27.2/n**2
+  e = -13.6/n**2
+  comprimento = h/(m*v)
+
+  print() 
+  print(f'Raio da órbita: {Decimal(raio):.2E} m')
+  print(f'Velocidade: {Decimal(v):.2E} m/s')
+  print(f'Energia cinetica: {Decimal(ec):.2E} eV')
+  print(f'Energia potencial: {Decimal(ep):.2E} eV')
+  print(f'Energia total: {Decimal(e):.2E} eV')
+  print(f'Comprimento de onda: {Decimal(comprimento):.2E} m')
 
 def emissao_absorcao():
   print("Entre com o nivel inicial de energia: ")
@@ -135,7 +149,7 @@ print("Atomo de Bohr e Quantizacao")
 print("Programa que realiza as operacoes relevantes a quantizacao e ao atomo de Bohr")
 print("No modelo de Bohr, os elétrons orbitam o nucleo em niveis de energia, transicao que ocorre quando o eletron absorve ou emite energia em formato de fotons")
 print("O programa realiza os seguintes calculos:")
-print("Propriedades do hidrogenio")
+print("Propriedades do eletron do atomo de hidrogenio")
 print("Niveis e outras propriedades no processo de emissao/absorcao")
 print("Propriedades do foton")
 print()
