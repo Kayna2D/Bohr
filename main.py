@@ -137,6 +137,34 @@ def foton():
   print("4 - Energia (eV)")
   opcao = int(input("Digite a propriedade de entrada: "))
 
+  if opcao == 1:
+    print("Entre com o comprimento (m): ")
+    l = float(input())
+
+    e_j = h*c/l
+    e_ev = e_j / 1.602E-19
+
+    print(f'Energia em J: {Decimal(e_j):.2E}')
+    print(f'Energia em eV: {Decimal(e_ev):.2E}')
+
+  elif opcao == 2:
+    print("Entre com a Frequencia (Hz): ")
+    f = float(input())
+
+    print("Propriedades do foton")
+
+  elif opcao == 3:
+    print("Entre com a Energia (J): ")
+    e = float(input())
+
+    print("Propriedades do foton")
+
+  else:
+    print("Entre com a Energia (eV): ")
+    e = float(input())
+
+    print("Propriedades do foton")
+
   print("Saidas")
 
 print("Autores:")
