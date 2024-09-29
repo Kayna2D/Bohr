@@ -37,8 +37,10 @@ def menu():
 def propriedades():
   print("Entre com o nivel de energia: ")
   n = float(input())
+
+  raio = n**2 * 5.29E-11
    
-  print("Propriedades do atomo de H")
+  print(f'Raio da órbita de H: {Decimal(raio):.2E} m')
 
 def emissao_absorcao():
   print("Entre com o nivel inicial de energia: ")
