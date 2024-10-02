@@ -56,80 +56,112 @@ def propriedades():
   print(f'Comprimento de onda: {Decimal(comprimento):.2E} m')
 
 def emissao_absorcao():
-  print("Entre com o nivel inicial de energia: ")
-  ni = float(input())
-  print("Entre com o nivel final de energia: ")
-  nf = float(input())
+    print("Entre com o nível inicial de energia (n_i): ")
+    ni = int(input())
+    print("Entre com o nível final de energia (n_f): ")
+    nf = int(input())
 
-  print("Propriedades do foton")
+    # Calcula a energia do fóton
+    E_foton = energia_foton(ni, nf)
+    f_foton = frequencia(E_foton)  # Frequência do fóton
+    lambda_foton = comprimento_onda(E_foton)  # Comprimento de onda do fóton
+
+    print(f"\nEnergia do fóton: {Decimal(E_foton):.2E} eV")
+    print(f"Frequência do fóton: {Decimal(f_foton):.2E} Hz")
+    print(f"Comprimento de onda do fóton: {Decimal(lambda_foton):.2E} m")
+
 
 def absorcao():
-  print("1 - Nivel inicial")
-  print("2 - Nivel final")
-  opcao = int(input("Digite a opção que deseja calcular: "))
-  print("1 - Frequencia (Hz)")
-  print("2 - Comprimento (m)")
-  opcao2 = int(input("Digite a propriedade de entrada: "))
+    print("1 - Calcular energia final")
+    print("2 - Calcular energia inicial")
+    opcao = int(input("Digite a opção que deseja calcular: "))
+    
+    if opcao == 1:
+        # Entrada: energia inicial e frequência ou comprimento
+        print("Entre com a energia inicial (eV): ")
+        E_inicial = float(input())
+        
+        print("1 - Frequência (Hz)")
+        print("2 - Comprimento (m)")
+        opcao2 = int(input("Digite a propriedade de entrada: "))
 
-  if opcao == 1:
-    print("Entre com o nivel final de energia: ")
-    nf = float(input())
+        if opcao2 == 1:
+            print("Entre com a Frequência (Hz): ")
+            f = float(input())
+            E_foton = h * f / 1.602E-19  # Converte energia de J para eV
+            E_final = E_inicial + E_foton
+            print(f"Energia final: {Decimal(E_final):.2E} eV")
+        else:
+            print("Entre com o comprimento (m): ")
+            l = float(input())
+            f = c / l
+            E_foton = h * f / 1.602E-19  # Converte energia de J para eV
+            E_final = E_inicial + E_foton
+            print(f"Energia final: {Decimal(E_final):.2E} eV")
 
-    if opcao2 == 1:
-      print("Entre com a Frequencia (Hz): ")
-      f = float(input())
     else:
-      print("Entre com o comprimento (m): ")
-      l = float(input())
+        # Entrada: energia final e frequência ou comprimento
+        print("Entre com a energia final (eV): ")
+        E_final = float(input())
 
-    print("Nivel inicial na absorcao de um foton")
+        print("1 - Frequência (Hz)")
+        print("2 - Comprimento (m)")
+        opcao2 = int(input("Digite a propriedade de entrada: "))
 
-  else:
-    print("Entre com o nivel inicial de energia: ")
-    ni = float(input())
-
-    if opcao2 == 1:
-      print("Entre com a Frequencia (Hz): ")
-      f = float(input())
-    else:
-      print("Entre com o comprimento (m): ")
-      l = float(input())
-
-    print("Nivel final na absorção de um foton")
+        if opcao2 == 1:
+            print("Entre com a Frequência (Hz): ")
+            f = float(input())
+            E_foton = h * f / 1.602E-19  # Converte energia de J para eV
+            E_inicial = E_final - E_foton
+            print(f"Energia inicial: {Decimal(E_inicial):.2E} eV")
+        else:
+            print("Entre com o comprimento (m): ")
+            l = float(input())
+            f = c / l
+            E_foton = h * f / 1.602E-19  # Converte energia de J para eV
+            E_inicial = E_final - E_foton
+            print(f"Energia inicial: {Decimal(E_inicial):.2E} eV")
 
 def emissao():
-  print("1 - Nivel inicial")
-  print("2 - Nivel final")
-  opcao = int(input("Digite a opção que deseja calcular: "))
-  print("1 - Frequencia (Hz)")
-  print("2 - Comprimento (m)")
-  opcao2 = int(input("Digite a propriedade de entrada: "))
+    print("1 - Calcular nível inicial")
+    print("2 - Calcular nível final")
+    opcao = int(input("Digite a opção que deseja calcular: "))
+    print("1 - Frequência (Hz)")
+    print("2 - Comprimento (m)")
+    opcao2 = int(input("Digite a propriedade de entrada: "))
 
-  if opcao == 1:
-    print("Entre com o nivel final de energia: ")
-    nf = float(input())
+    if opcao == 1:
+        print("Entre com o nível final (n_f): ")
+        nf = int(input())
 
-    if opcao2 == 1:
-      print("Entre com a Frequencia (Hz): ")
-      f = float(input())
+        if opcao2 == 1:
+            print("Entre com a Frequência (Hz): ")
+            f = float(input())
+            ni = nivel_quatico_freq(f)
+            print(f"Nível inicial (n_i): {ni}")
+        else:
+            print("Entre com o comprimento (m): ")
+            l = float(input())
+            f = c / l
+            ni = nivel_quatico_freq(f)
+            print(f"Nível inicial (n_i): {ni}")
+
     else:
-      print("Entre com o comprimento (m): ")
-      l = float(input())
+        print("Entre com o nível inicial (n_i): ")
+        ni = int(input())
 
-    print("Nivel inicial na emissão de um foton")
+        if opcao2 == 1:
+            print("Entre com a Frequência (Hz): ")
+            f = float(input())
+            nf = nivel_quatico_freq(f)
+            print(f"Nível final (n_f): {nf}")
+        else:
+            print("Entre com o comprimento (m): ")
+            l = float(input())
+            f = c / l
+            nf = nivel_quatico_freq(f)
+            print(f"Nível final (n_f): {nf}")
 
-  else:
-    print("Entre com o nivel inicial de energia: ")
-    ni = float(input())
-
-    if opcao2 == 1:
-      print("Entre com a Frequencia (Hz): ")
-      f = float(input())
-    else:
-      print("Entre com o comprimento (m): ")
-      l = float(input())
-
-    print("Nivel final na emissao de um foton")
 
 def foton():
   print("1 - Comprimento (m)")
