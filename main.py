@@ -64,6 +64,21 @@ def frequencia(energia):
 def comprimento_onda(energia):
     return h * c / (energia * 1.602E-19)  # Comprimento de onda em m
 
+def emissao_absorcao():
+    print("Entre com o nível inicial de energia (n_i): ")
+    ni = int(input())
+    print("Entre com o nível final de energia (n_f): ")
+    nf = int(input())
+
+    # Calcula a energia do fóton
+    E_foton = energia_foton(ni, nf)
+    f_foton = frequencia(E_foton)  # Frequência do fóton
+    lambda_foton = comprimento_onda(E_foton)  # Comprimento de onda do fóton
+
+    print(f"\nEnergia do fóton: {Decimal(E_foton):.2E} eV")
+    print(f"Frequência do fóton: {Decimal(f_foton):.2E} Hz")
+    print(f"Comprimento de onda do fóton: {Decimal(lambda_foton):.2E} m")
+
 def absorcao():
     print("1 - Calcular energia final")
     print("2 - Calcular energia inicial")
@@ -155,8 +170,8 @@ def emissao():
 
 def nivel_quatico_freq(f, n):
     E_foton = h * f / 1.602E-19
-    ni = math.sqrt(13.6 / (13.6 - E_foton))  # Aproximado
-    return round(ni)
+    ni = round(math.sqrt(13.6 / (13.6 - E_foton)))  # Aproximado
+    return ni
 
 def foton():
     print("1 - Comprimento (m)")
@@ -211,15 +226,16 @@ print("Mario Eugenio Silva")
 print()
 print("------------------------------------------------------------------------------------")
 print()
-print("Atomo de Bohr e Quantizacao")
-print("Programa que realiza as operacoes relevantes a quantizacao e ao atomo de Bohr")
-print("No modelo de Bohr, os elétrons orbitam o nucleo em niveis de energia, transicao que ocorre quando o eletron absorve ou emite energia em formato de fotons")
-print("O programa realiza os seguintes calculos:")
-print("Propriedades do eletron do atomo de hidrogenio")
-print("Niveis e outras propriedades no processo de emissao/absorcao")
-print("Propriedades do foton")
+print("Átomo de Bohr e Quantização")
+print("Programa que realiza as operações relevantes à quantização e ao átomo de Bohr")
+print("No modelo de Bohr, os elétrons orbitam o núcleo em níveis de energia, transição que ocorre quando o elétron absorve ou emite energia em formato de fótons.")
+print("O programa realiza os seguintes cálculos:")
+print("Propriedades do elétron do átomo de hidrogênio")
+print("Níveis e outras propriedades no processo de emissão/absorção")
+print("Propriedades do fóton")
 print()
 print("------------------------------------------------------------------------------------")
 print()
 menu()
+
 
